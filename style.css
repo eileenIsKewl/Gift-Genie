@@ -260,6 +260,10 @@ textarea::placeholder {
   color: var(--accent-primary);
 }
 
+#output-content a {
+  color: #7ec8e3;
+}
+
 /* 
    Utilities
 */
