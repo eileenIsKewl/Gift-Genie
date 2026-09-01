@@ -59,3 +59,12 @@ export function setLoading(isLoading) {
     lampText.textContent = "Rub the Lamp";
   }
 }
+
+/**
+ * Show the output container immediately (for streaming feedback)
+ */
+export function showStream() {
+  const outputContainer = document.getElementById("output-container");
+  outputContainer.classList.remove("hidden");
+  outputContainer.classList.add("visible");
+}
