@@ -1,6 +1,6 @@
 import { marked } from "marked";
 import DOMPurify from "dompurify";
-import { autoResizeTextarea, setLoading } from "./utils.js";
+import { autoResizeTextarea, setLoading, showStream } from "./utils.js";
 
 // Get UI elements
 const giftForm = document.getElementById("gift-form");
@@ -40,7 +40,10 @@ async function handleGiftRequest(e) {
 
     // Parse response and extract giftSuggestions
     const giftSuggestions = data.giftSuggestions;
-
+    
+    // Show output container immediately for streaming feedback
+    showStream()
+    
     // Convert Markdown to HTML
     const html = marked.parse(giftSuggestions);
 

@@ -47,16 +47,20 @@ app.post("/api/gift", async (req, res) => {
 
   try {
     // Send chat completions request
-    const response = await openai.chat.completions.create({
+    const stream = await openai.chat.completions.create({
       model: process.env.AI_MODEL,
       messages,
+      stream: true
     });
 
     // Extract content and send back as JSON
-    const giftSuggestions = response.choices[0].message.content
+    const giftSuggestions = stream.choices[0].message.content
     console.log(giftSuggestions)
 
-    res.json({ giftSuggestions });
+    res.json({
+      { giftSuggestions },
+      
+    });
   } catch (e) {
     console.error(e)
     res.status(500).json({ message: `It's not you, it's us. 
